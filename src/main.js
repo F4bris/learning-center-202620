@@ -8,6 +8,7 @@ import 'primicons/primeicons.css';
 import ToolTip from 'primevue/ToolTip';
 import i18n from "./i18n.js";
 import router from "./router.js";
+import pinia from "./pinia.js";
 
 
 const primeVueLicenseKey = import.meta.env.VITE_PRIME_UI_LICENSE_KEY;
@@ -15,4 +16,5 @@ createApp(App)
     .use(PrimeVue, {theme:{preset:Material}, ripple: true, license: primeVueLicenseKey})
     .use(i18n)
     .use(router)
+    .use(pinia)
     .mount('#app')
