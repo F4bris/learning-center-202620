@@ -2,9 +2,13 @@ import {createRouter, createWebHistory} from "vue-router";
 import Home from "./shared/presentation/views/home.vue";
 import About from "./shared/presentation/views/about.vue";
 
+const pageNotFound = () => import('./shared/presentation/views/page-not-found.vue');
+
 const routes =[
     { path: '/home', name: 'home', component: Home, meta:{title: 'Home'}},
     { path: '/about', name: 'about', component: About, meta:{title: 'About'}},
+    { path: '/', redirect: '/home'},
+    { path: '/:pathMatch(.*)*', name: 'not-found', component: PageNotFound, meta:{title: 'Page not found'}},
 ];
 
 const router = createRouter({
@@ -18,4 +22,6 @@ router.beforeEach((to,from) =>{
     document.title = `${baseTitle} - ${to.meta.title}`;
     return true;
 });
+
+
 export default router;
